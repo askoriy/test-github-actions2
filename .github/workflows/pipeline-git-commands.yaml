@@ -52,6 +52,9 @@ jobs:
           git log --oneline --all --graph
           git status
           git tag $(date +%Y-%m-%d_%H-%M-%S) HEAD
+          date > release-date
+          git add release-date
+          git commit -m "Update release date"
           #git push --tags
           git push --tags https://github.com/askoriy/test-github-actions2.git HEAD:master
           echo test2
