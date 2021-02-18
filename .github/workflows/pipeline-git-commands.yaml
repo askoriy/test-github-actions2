@@ -45,7 +45,7 @@ jobs:
         run: export
 
       - name: Run git commands
-        run:
+        run: |
           set -x
           git log --oneline --all --graph
           git status
