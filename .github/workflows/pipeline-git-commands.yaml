@@ -1,6 +1,8 @@
 name: Pipeline git commands
 on:
   push:
+    branches:
+      - master
     paths:
       - .github/workflows/pipeline-git-commands.yaml
 
