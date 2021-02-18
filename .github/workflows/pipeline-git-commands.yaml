@@ -53,6 +53,8 @@ jobs:
           git status
           git tag $(date +%Y-%m-%d_%H-%M-%S) HEAD
           date > release-date
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
           git add release-date
           git commit -m "Update release date"
           #git push --tags
