@@ -59,4 +59,4 @@ jobs:
           git commit -m "Update release date"
           #git push --tags
           git push --tags https://github.com/askoriy/test-github-actions2.git HEAD:master
-          echo test2
+          echo test3
