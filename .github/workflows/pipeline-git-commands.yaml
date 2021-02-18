@@ -54,4 +54,4 @@ jobs:
           git tag $(date +%Y-%m-%d_%H-%M-%S) HEAD
           #git push --tags
           git push --tags https://github.com/askoriy/test-github-actions2.git HEAD:master
-          echo test
+          echo test2
