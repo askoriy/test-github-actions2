@@ -57,10 +57,7 @@ jobs:
               repo,
               state: 'open',
             });
-            for (const pr of pullRequests) {
-              console.log(pr);
-              console.log('------------------------------------------------------------');
-            };
+            console.log(pullRequests);
           result-encoding: string
 
       - name: Get result
