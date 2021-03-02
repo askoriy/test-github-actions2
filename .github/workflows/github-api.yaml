@@ -52,7 +52,7 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const pullRequests = github.pulls.list({
+            const pullRequests = await github.pulls.list({
               owner,
               repo,
               state: 'open',
