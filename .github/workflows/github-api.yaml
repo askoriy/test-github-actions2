@@ -55,7 +55,7 @@ jobs:
             const pullRequests = github.pulls.list({
               owner,
               repo,
-              state: open,
+              state: 'open',
             });
             for (const pr of pullRequests) {
               console.log(pr);
