@@ -57,17 +57,18 @@ jobs:
               repo,
               state: 'open',
             });
-            console.log(pullRequests);
+            //console.log(pullRequests);
             for (const pr of pullRequests) {
+              console.log(pr);
               const { data: pullRequest } = await github.pulls.get({
                 owner,
                 repo,
-                pr.number,
+                pr,
               });
               console.log('---------------- PR --------------');
               console.log(pullRequest);
               console.log('------------------------------------');
-            }
+            };
           result-encoding: string
 
       #- name: Get result
