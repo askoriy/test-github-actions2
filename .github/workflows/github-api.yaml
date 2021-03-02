@@ -46,20 +46,30 @@ jobs:
       - name: Dump environment variables
         run: export
 
-
-      - uses: actions/github-script@v3
+      - name: Run github script
+        uses: actions/github-script@v3
         id: set-result
         with:
           script: |
             const { owner, repo } = context.repo;
-            const pullRequests = await github.pulls.list({
+            const { data: pullRequests } = await github.pulls.list({
               owner,
               repo,
               state: 'open',
             });
             console.log(pullRequests);
+            for (const pr of pullRequests) {
+              const { data: pullRequest } = await github.pulls.get({
+                owner,
+                repo,
+                pr.number,
+              });
+              console.log('---------------- PR --------------');
+              console.log(pullRequest);
+              console.log('------------------------------------');
+            }
           result-encoding: string
 
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
+      #- name: Get result
+      #  run: echo "${{steps.set-result.outputs.result}}"
 
