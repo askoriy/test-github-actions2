@@ -63,7 +63,7 @@ jobs:
               const { data: pullRequest } = await github.pulls.get({
                 owner,
                 repo,
-                pr['number'],
+                pr.number,
               });
               console.log('---------------- PR --------------');
               console.log(pullRequest);
