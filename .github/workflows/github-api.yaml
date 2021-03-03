@@ -77,7 +77,7 @@ jobs:
                 owner,
                 repo,
                 base: pr.head.ref,
-                head: pr.base.ref,
+                head: 'master',
               });
               console.log('---------------------- merge ----------------');
               console.log(res);
