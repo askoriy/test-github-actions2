@@ -78,6 +78,9 @@ jobs:
                 repo,
                 base: pr.head.ref,
                 head: 'master',
+              }).catch((err) => {
+                console.log('ERROR: Cannot merge branch');
+                console.log(err);
               });
               console.log('---------------------- merge ----------------');
               console.log(res);
