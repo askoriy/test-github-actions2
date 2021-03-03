@@ -59,15 +59,29 @@ jobs:
             });
             //console.log(pullRequests);
             for (const pr of pullRequests) {
+              console.log('---------------- PR --------------');
               console.log(pr);
-              const { data: pullRequest } = await github.pulls.get({
+              console.log('------------------------------------');
+
+              //const { data: pullRequest } = await github.pulls.get({
+              //  owner,
+              //  repo,
+              //  pull_number: pr.number,
+              //});
+              
+              //console.log('---------------- PR --------------');
+              //console.log(pullRequest);
+              //console.log('------------------------------------');
+              
+              const res = await github.repos.merge({
                 owner,
                 repo,
-                pull_number: pr.number,
+                base: pr.head.ref,
+                head: pr.base.ref,
               });
-              console.log('---------------- PR --------------');
-              console.log(pullRequest);
-              console.log('------------------------------------');
+              console.log('---------------------- merge ----------------');
+              console.log(res);
+              console.log('==================================================');
             };
           result-encoding: string
 
