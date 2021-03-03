@@ -59,9 +59,9 @@ jobs:
             });
             //console.log(pullRequests);
             for (const pr of pullRequests) {
-              console.log('---------------- PR --------------');
-              console.log(pr);
-              console.log('------------------------------------');
+              //console.log('---------------- PR --------------');
+              //console.log(pr);
+              //console.log('------------------------------------');
 
               //const { data: pullRequest } = await github.pulls.get({
               //  owner,
@@ -72,19 +72,19 @@ jobs:
               //console.log('---------------- PR --------------');
               //console.log(pullRequest);
               //console.log('------------------------------------');
-              
+              console.log(`Merging master into PR #${pr.number}: ${pr.title}`);
               const res = await github.repos.merge({
                 owner,
                 repo,
                 base: pr.head.ref,
                 head: 'master',
               }).catch((err) => {
-                console.log('ERROR: Cannot merge branch');
-                console.log(err);
+                console.log('ERROR: Cannot merge branch:', err.message);
+                //console.log(err);
               });
-              console.log('---------------------- merge ----------------');
-              console.log(res);
-              console.log('==================================================');
+              //console.log('---------------------- merge ----------------');
+              //console.log(res);
+              //console.log('==================================================');
             };
           result-encoding: string
 
