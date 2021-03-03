@@ -79,7 +79,7 @@ jobs:
                 base: pr.head.ref,
                 head: 'master',
               }).catch((err) => {
-                console.log('ERROR: Cannot merge branch:', err.message);
+                console.log('ERROR: Cannot merge master into PR #${pr.number}:', err.message);
                 //console.log(err);
               });
               //console.log('---------------------- merge ----------------');
