@@ -1,0 +1,49 @@
+name: Dump contexts
+on:
+  push:
+    paths:
+      - .github/workflows/dump-contexts.yaml
+
+jobs:
+  dump-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Dump contexts
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+          JOB_CONTEXT: ${{ toJSON(job) }}
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
+          RUNNER_CONTEXT: ${{ toJSON(runner) }}
+          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: |
+          echo "::group::GitHub context"
+          echo "$GITHUB_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Job context"
+          echo "$JOB_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Steps context"
+          echo "$STEPS_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Runner context"
+          echo "$RUNNER_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Strategy context"
+          echo "$STRATEGY_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Matrix context"
+          echo "$MATRIX_CONTEXT"
+          echo "::endgroup::"
+
+          echo "::group::Environment variables"
+          export
+          echo "::endgroup::"
