@@ -1,0 +1,32 @@
+name: Dump contexts
+on:
+  push:
+    paths:
+      - .github/workflows/group-outputs.yaml
+
+jobs:
+  dump-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Group output
+        run: |
+          echo "::group::group 1"
+          echo This is group 1 content
+          echo "::endgroup::"
+
+          echo "::group::group 2"
+          echo This is group 2 content
+          ::set-output name=testoutput::testvalue
+          echo "::endgroup::"
+
+          echo "::group::group 3"
+          echo This is group 3 content
+          echo "::warning file=.github/workflows/group-outputs.yaml,line=12,col=5::Missing semicolon"
+          echo "::endgroup::"
+
+          echo "::group::group 4"
+          echo This is group 4 content
+          echo "::endgroup::"
