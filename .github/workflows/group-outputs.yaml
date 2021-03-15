@@ -19,7 +19,7 @@ jobs:
 
           echo "::group::group 2"
           echo This is group 2 content
-          ::set-output name=testoutput::testvalue
+          echo ::set-output name=testoutput::testvalue
           echo "::endgroup::"
 
           echo "::group::group 3"
